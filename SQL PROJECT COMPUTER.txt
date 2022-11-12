@@ -1,0 +1,18 @@
+create database shivraj_enterprises;
+create table Product_List
+(Serial_Number integer not null primary key,
+Name varchar(50),
+Composition varchar(100),
+Price integer,
+Manufacturer varchar(100),
+Quantity integer);
+insert into Product_list values(1,"Tivomac","Ivermectin 200 mg",250,"Le-Mantus Pharmaceuticals",200);
+insert into Product_list values(2,"Limazole","Albendazole 500 mg",800,"Le-Mantus Pharmaceuticals",300);
+insert into Product_list values(3,"Nurokind-Plus","Mecobalamin 45 mg",500,"Le-Mantus Pharmaceuticals",150);
+insert into Product_list values(4,"Sulphas-Plus","Sulphadin 80 mg",600,"Sarabhai Pharmaceuticals",200);
+insert into Product_list values(5,"Pyrogesic","Piroxicam 90 mg",900,"Sarabhai Pharmaceuticals",100);
+insert into Product_list values(6,"Amitek","Amikasin Sulphate 250mg/ml",1075,"Sarabhai Pharmaceuticals",100);
+insert into Product_list values(7,"Butavon","Butaphosphon 100mg & Vitamin B1250mcg",570,"Le-Mantus Pharmaceuticals",300);
+insert into Product_list values(8,"Cipkon-TZ","Ciprofloxacin 1500mg Tinidazole 1800mg",1440,"Le-Mantus Pharmaceuticals",300);
+insert into Product_list values(9,"Flexicon","Enrofloxacin 1500mg",1400,"Le-Mantus Pharmaceuticals",500);
+	
