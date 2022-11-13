@@ -219,10 +219,58 @@ while True:
         #to exit
         elif C_choice==4:
             break
+        elif C_choice not in [1,2,3,4]:
+          print('Option not available/nPlease try again.')
+          C_choice=int(input('Enter your choice: '))
+          elif ch==2:
+        print('''
+        1. Medicine Bucket
+        2. Payment Amount
+        3. View Available Medicine
+        4. Exit
+        _____________________________''')
+        C_choice=int(input('Enter your choice: '))
+        if C_choice==1:
+            C_name=input('Enter your Legal name: ')
+            item_code=int(input('''Enter the Medicine's code of medicine you want to purchase: '''))
+            quantity=int(input('Enter the quantity of Medicine to be purchased: '))
+            mycursor.execute("select * from stock where item_code='"+str(item_code)+"'")
+
+            for i in mycursor:
+                t_code,t_name,t_composition,t_quan,t_price=i
+                amount=t_price*quantity #amount to be paid
+                net_quantity=t_quan-quantity #decreasing medicine quantity as a variable
+                mycursor.execute("update stock set quantity='"+str(net_quantity)+"'where item_code='"+str(item_code)+"'") #decreasing the product quantity from stock
+                mycursor.execute("insert into purchase values(now(),'"+C_name+"','"+str(item_code)+"','"+str(amount)+"')")
+                print('''Successfully added the Medicine to your Medicine List''')
+                mydb.commit()
+
+        #for payment
+        elif C_choice==2:
+            mycursor.execute('select sum(amount) from purchase;')
+            amount=mycursor.fetchall()
+            amt=str(amount)
+            total='₹'
+            num=('1','2','3','4','5','6','7','8','9','0')
+            for i in amt:
+                if i in num:
+                    total+=i
+            print("""Your Medicines 💊 would cost: """,total)
+            print('''
+            _______________________________
+            Thank You for Purchasing
+                See you soon 😀
+            _______________________________''')
+            break
+
+        #show all medicines
+        elif C_choice==3:
+            mycursor.execute('select * from stock')
+            print('''Medicine's Code || Medicine's name || Medicine's Composition || Medicine's quantity || Medicine's price''')
+            for i in mycursor:
+                t_code,t_name,t_composition,t_quan,t_price=i
+                print(f"{t_code}    ||   {t_name}     ||   {t_composition}     ||     {t_quan}     ||     ₹{t_price}"               
     
     elif ch==3:
         break
-
-    else:
-        print('Option does not exists')
-        break
+ 
