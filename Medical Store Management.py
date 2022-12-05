@@ -188,7 +188,8 @@ while True:
                 mycursor.execute("insert into purchase values(now(),'"+C_name+"','"+str(item_code)+"','"+str(amount)+"')")
                 print('''Successfully added the Medicine to your Medicine List''')
                 mydb.commit()
-
+                break
+            break
         #for payment
         elif C_choice==2:
             mycursor.execute('select sum(amount) from purchase;')
@@ -222,14 +223,14 @@ while True:
         elif C_choice not in [1,2,3,4]:
           print('Option not available/nPlease try again.')
           C_choice=int(input('Enter your choice: '))
-          elif ch==2:
-        print('''
-        1. Medicine Bucket
-        2. Payment Amount
-        3. View Available Medicine
-        4. Exit
-        _____________________________''')
-        C_choice=int(input('Enter your choice: '))
+          if ch==2:
+            print('''
+            1. Medicine Bucket
+            2. Payment Amount
+            3. View Available Medicine
+            4. Exit
+            _____________________________''')
+            C_choice=int(input('Enter your choice: '))
         if C_choice==1:
             C_name=input('Enter your Legal name: ')
             item_code=int(input('''Enter the Medicine's code of medicine you want to purchase: '''))
@@ -269,8 +270,7 @@ while True:
             print('''Medicine's Code || Medicine's name || Medicine's Composition || Medicine's quantity || Medicine's price''')
             for i in mycursor:
                 t_code,t_name,t_composition,t_quan,t_price=i
-                print(f"{t_code}    ||   {t_name}     ||   {t_composition}     ||     {t_quan}     ||     ₹{t_price}"               
+                print(f"{t_code}    ||   {t_name}     ||   {t_composition}     ||     {t_quan}     ||     ₹{t_price}")               
     
     elif ch==3:
         break
- 
